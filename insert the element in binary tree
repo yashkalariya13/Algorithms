@@ -1,0 +1,141 @@
+#include <iostream>
+#include<stdlib.h>
+
+using namespace std;
+
+struct node
+{
+    int data;
+    struct node* left;
+    struct node* right;
+    
+};
+
+struct node* crenode(int data)
+{
+    struct node *a;
+    a=(struct node*)malloc(sizeof(struct node));
+    a->data=data;
+    a->left=NULL;
+    a->right=NULL;
+}
+
+
+void inorder(struct node *p)
+{
+    if(p!=NULL)
+    {
+        inorder(p->left);
+        
+        cout<<" "<<p->data;
+        
+        inorder(p->right);
+    }
+}
+
+
+struct node* insert(struct node* k,int key)
+{
+    if(k==NULL)
+    {
+        return crenode(key);
+    }
+    else
+    {
+        if(k->data>key)
+        {
+            k->left=insert(k->left,key);
+        }
+        else
+        {
+            k->right=insert(k->right,key);
+        }
+    }
+    return k;
+}
+int main()
+{
+   struct node* c=NULL;
+   c=insert(c,10);
+   insert(c,30);
+   insert(c,40);
+   insert(c,20);
+   insert(c,90);
+   insert(c,50); #include <iostream>
+#include<stdlib.h>
+
+using namespace std;
+
+struct node
+{
+    int data;
+    struct node* left;
+    struct node* right;
+    
+};
+
+struct node* crenode(int data)
+{
+    struct node *a;
+    a=(struct node*)malloc(sizeof(struct node));
+    a->data=data;
+    a->left=NULL;
+    a->right=NULL;
+}
+
+
+void inorder(struct node *p)
+{
+    if(p!=NULL)
+    {
+        inorder(p->left);
+        
+        cout<<" "<<p->data;
+        
+        inorder(p->right);
+    }
+}
+
+
+struct node* insert(struct node* k,int key)
+{
+    if(k==NULL)
+    {
+        return crenode(key);
+    }
+    else
+    {
+        if(k->data>key)
+        {
+            k->left=insert(k->left,key);
+        }
+        else
+        {
+            k->right=insert(k->right,key);
+        }
+    }
+    return k;
+}
+int main()
+{
+   struct node* c=NULL;
+   c=insert(c,10);
+   insert(c,30);
+   insert(c,40);
+   insert(c,20);
+   insert(c,90);
+   insert(c,50);
+   
+   
+   inorder(c);
+
+    return 0;
+}
+
+   
+   
+   inorder(c);
+
+    return 0;
+}
+
