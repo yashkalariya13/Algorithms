@@ -1,0 +1,106 @@
+
+#include <stdio.h>
+int size=10;
+
+struct stack 
+{
+    
+ int top;
+ int a[10];
+
+};
+void push(struct stack *p,int data)
+{
+    if(p->top==size-1)
+    {
+        printf("stack is over flow right now");
+    }
+    else
+    {
+        p->top++;
+        p->a[p->top]=data;
+    }
+}
+void pop(struct stack *p)
+{
+    if(p->top==-1)
+    {
+        printf("stack is empty right now");
+    }
+    else{
+        int y=p->top--;
+        printf("%d\n",p->a[y]);
+    }
+}
+void peep(struct stack *p,int index)
+{
+    if(p->top==-1)
+    {
+        printf("stack is empty right now");
+    }
+    else
+    {
+        printf("%d\n",p->a[p->top-index+1]);
+    }
+}
+void display(struct stack *p)
+{
+    if(p->top==-1)
+    {
+        printf("stack is empty right now");
+    }
+    else
+    {
+        for(int i=p->top;i>=0;i--)
+        {
+            printf("%d\n",p->a[i]);
+        }
+    }
+    
+}
+
+int main()
+{
+    struct stack s;
+    s.top=-1;
+    int n;
+    int w;
+    int e;
+    while(1)
+    {
+        printf("-----------------------------------------------\n");
+        printf("enter the number \n 1)push operation \n 2) peep operation \n 3)pop operatin  \n 4) display \n 5) exit \n");
+        printf("-----------------------------------------------\n");
+        scanf("%d",&n);
+        
+        switch(n)
+        {
+            case 1:
+            printf("enter the number\n");
+            scanf("%d",&w);
+            push(&s,w);
+            break;
+            
+            case 2:
+            
+            printf("enter the index in between 1 to 10\n");
+            scanf("%d",&e);
+            peep(&s,e);
+            break;
+            
+            case 3:
+            pop(&s);
+            break;
+            
+            case 4:
+            display(&s);
+            break;
+            
+            case 5:
+            exit(0);
+           
+        }
+    }
+
+    return 0;
+}
