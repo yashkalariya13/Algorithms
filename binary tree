@@ -1,0 +1,44 @@
+
+#include <iostream>
+#include<stdlib.h>
+
+using namespace std;
+
+struct node
+{
+    int data;
+    struct node* left;
+    struct node* right;
+};
+
+struct node*create(int data)
+{
+    struct node* a;
+    a=(struct node*)malloc(sizeof(struct node));
+    a->data=data;
+    a->left=NULL;
+    a->right=NULL;
+    return a;
+}
+
+int main()
+{
+    struct node* p1=create(11);
+    struct node* p2=create(12);
+    struct node* p3=create(13);
+    struct node* p4=create(14);
+    struct node* p5=create(15);
+    struct node* p6=create(16);
+    struct node* p7=create(17);
+    
+    p1->left=p2;
+    p1->right=p3;
+    p2->left=p4;
+    p2->right=p5;
+    p3->left=p6;
+    p3->right=p7;
+    
+    inorder(p1);
+
+    return 0;
+}
