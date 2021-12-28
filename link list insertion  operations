@@ -1,0 +1,117 @@
+#include<iostream>
+#include<stdlib.h>
+using namespace std;
+struct node
+{
+    int data;
+    struct node* next;
+};
+
+struct node*create(int data)
+{
+    struct node *a;
+    a=(struct node*)malloc(sizeof(struct node));
+    a->next=NULL;
+    a->data=data;
+    return a;
+}
+
+struct node* insertf(struct node *p,int data)
+{
+    struct node *a;
+    a=(struct node*)malloc(sizeof(struct node));
+    a->next=p;
+    a->data=data;
+    return a;
+    
+}
+struct node*insertlast(struct node *p,int data)
+{ 
+    struct node *a;
+    a=(struct node*)malloc(sizeof(struct node));
+    while(p->next!=NULL)
+    {
+        p=p->next;
+    }
+    
+    p->next=a;
+    a->next=NULL;
+    a->data=data;
+    return a;
+    
+}
+
+struct node*insertb(struct node *p,int data,int index)
+{ 
+    struct node *a;
+    a=(struct node*)malloc(sizeof(struct node));
+    int i=0;
+    while(i!=index-1)
+    {
+        p=p->next;
+        i++;
+    }
+    
+    a->next=p->next;
+    p->next=a;
+    a->data=data;
+    return a;
+}
+
+struct node*insertbserch(struct node *p,int data,int sea)
+{ 
+    struct node *a;
+    a=(struct node*)malloc(sizeof(struct node));
+    
+    while(p->data!=sea)
+    {
+        p=p->next;
+       
+    }
+    
+    a->next=p->next;
+    p->next=a;
+    a->data=data;
+    return a;
+}
+
+
+
+void display(struct node* p)
+{
+    while(p!=NULL)
+    {
+        cout<<p->data<<endl;
+        p=p->next;
+    }
+}
+
+int main()
+{
+     struct node *p1=create(12);
+     struct node *p2=create(13);
+     struct node *p3=create(14);
+     struct node *p4=create(15);
+     
+    p1->next=p2;
+    p2->next=p3;
+    p3->next=p4;
+    p4->next=NULL;
+    cout<<"--------------- create node---------------------"<<endl;
+    display(p1);
+    cout<<"---------------insert at first ---------------------"<<endl;
+    struct node*p=insertf(p1,11);
+     display(p);
+     cout<<"----------------insert at last--------------------"<<endl;
+    struct node*p5=insertlast(p,16);
+     display(p);
+     cout<<"---------------insert at particular index---------------------"<<endl;
+    struct node*p6=insertb(p,17,2);
+     display(p);
+      cout<<"----------------insert at element--------------------"<<endl;
+    struct node*p7=insertbserch(p,19,12);
+     display(p);
+    
+    return 0;
+}
+
