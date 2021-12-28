@@ -1,0 +1,90 @@
+#include<iostream>
+
+using namespace std;
+
+struct stack 
+{
+    int r;
+    int f;
+    int size=10;
+    int a[10];
+    
+};
+
+void enque(struct stack *p,int data)
+{
+    if(p->r==p->size-1)
+    {
+        cout<<"stack is over flow"<<endl;
+    }
+    else
+    {
+        p->r++;
+        p->a[p->r]=data;
+    }
+}
+void deque(struct stack *p)
+{
+    if(p->r==p->f)
+    {
+        cout<<"stack is empty right now"<<endl;
+    }
+    else
+    {
+        p->f++;
+        cout<<p->a[p->f];
+    }
+}
+
+void display(struct stack *p)
+{
+    int c=p->f;
+    int d=p->r;
+    for(int i=c;i<=d;i++)
+    {
+        cout<<p->a[i]<<endl;
+    }
+}
+
+int main()
+{
+   struct stack s;
+   s.r=-1;
+   s.f=-1;
+   int n;
+   
+   while(1)
+   {
+       cout<<"-----------------------------------"<<endl;
+       cout<<"enter the number "<<endl<<"1)enque operation"<<endl<<"2)deque operation"<<endl<<"3)display"<<endl<<"4)exit"<<endl;
+       cout<<"-----------------------------------"<<endl;
+        cin>>n;
+       
+       switch(n)
+       {
+           case 1:
+           int r;
+           cout<<"enter the number"<<endl;
+           cin>>r;
+           enque(&s,r);
+           break;
+           
+           case 2:
+           deque(&s);
+           break;
+           
+           case 3:
+           display(&s);
+           break;
+           
+           case 4:
+           exit(0);
+           
+       }
+       
+   }
+   
+    
+    return 0;
+    
+}
