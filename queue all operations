@@ -1,3 +1,4 @@
+
 #include<iostream>
 
 using namespace std;
@@ -21,6 +22,10 @@ void enque(struct stack *p,int data)
     {
         p->r++;
         p->a[p->r]=data;
+         if(p->f==-1)
+        {
+            p->f=0;
+        }
     }
 }
 void deque(struct stack *p)
@@ -32,7 +37,8 @@ void deque(struct stack *p)
     else
     {
         p->f++;
-        cout<<p->a[p->f];
+        cout<<"Deleted element is "<<p->a[p->f-1]<<endl;
+       
     }
 }
 
@@ -57,7 +63,7 @@ int main()
    {
        cout<<"-----------------------------------"<<endl;
        cout<<"enter the number "<<endl<<"1)enque operation"<<endl<<"2)deque operation"<<endl<<"3)display"<<endl<<"4)exit"<<endl;
-       cout<<"-----------------------------------"<<endl;
+       cout<<"-----------------------------------\n"<<endl;
         cin>>n;
        
        switch(n)
@@ -88,3 +94,4 @@ int main()
     return 0;
     
 }
+
