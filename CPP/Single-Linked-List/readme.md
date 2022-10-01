@@ -34,3 +34,9 @@ Step 3 - Define a Node structure with two members data and next
 Step 4 - Define a Node pointer 'head' and set it to NULL.
 
 Step 5 - Implement the main method by displaying operations menu and make suitable function calls in the main method to perform user selected operation.
+
+**Output**
+
+
+![image](https://user-images.githubusercontent.com/103835667/193409700-2bb264c0-022a-4fe3-8acc-99853bc4ade9.png)
+
