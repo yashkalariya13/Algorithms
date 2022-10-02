@@ -1,0 +1,87 @@
+// C++ program for the above approach
+
+#include <bits/stdc++.h>
+using namespace std;
+
+// Function to return the count of nodes
+// in the path from source to destination
+int dfs(int src, int dest, int* vis,
+		vector<int>* adj)
+{
+
+	// Mark the node visited
+	vis[src] = 1;
+
+	// If dest is reached
+	if (src == dest) {
+		return 1;
+	}
+
+	// Traverse all adjacent nodes
+	for (int u : adj[src]) {
+
+		// If not already visited
+		if (!vis[u]) {
+
+			int temp = dfs(u, dest, vis, adj);
+
+			// If there is path, then
+			// include the current node
+			if (temp != 0) {
+
+				return temp + 1;
+			}
+		}
+	}
+
+	// Return 0 if there is no path
+	// between src and dest through
+	// the current node
+	return 0;
+}
+
+// Function to return the
+// count of nodes between two
+// given vertices of the acyclic Graph
+int countNodes(int V, int E, int src, int dest,
+			int edges[][2])
+{
+	// Initialize an adjacency list
+	vector<int> adj[V + 1];
+
+	// Populate the edges in the list
+	for (int i = 0; i < E; i++) {
+		adj[edges[i][0]].push_back(edges[i][1]);
+		adj[edges[i][1]].push_back(edges[i][0]);
+	}
+
+	// Mark all the nodes as not visited
+	int vis[V + 1] = { 0 };
+
+	// Count nodes in the path from src to dest
+	int count = dfs(src, dest, vis, adj);
+
+	// Return the nodes between src and dest
+	return count - 2;
+}
+
+// Driver Code
+int main()
+{
+	// Given number of vertices and edges
+	int V = 8, E = 7;
+
+	// Given source and destination vertices
+	int src = 5, dest = 2;
+
+	// Given edges
+	int edges[][2]
+		= { { 1, 4 }, { 4, 5 },
+			{ 4, 2 }, { 2, 6 },
+			{ 6, 3 }, { 2, 7 },
+			{ 3, 8 } };
+
+	cout << countNodes(V, E, src, dest, edges);
+
+	return 0;
+}
