@@ -1,5 +1,5 @@
 #include<iostream>
-#define MAX 5
+#define MAX 10
 using namespace std;
 
 
@@ -31,7 +31,7 @@ class Queue
 		
 		bool isFull()
 		{
-			if( (front==0 && rear==MAX-1)  || (front==rear+1) )
+			if(rear==MAX-1)
 			{
 				return true;
 			}
@@ -53,25 +53,21 @@ void Queue :: enqueue()
 {
 	if(isFull())
 	{
-		cout<<"\nQueue is Full\n";
+		cout<<"\nQueue is Full";
 	}
 	
 	else
 	{
 		cout<<"\nEnter element in queue: ";
 		cin>>data;
-	
+		
+		rear++;
+		que[rear]=data;
+		
 		if(front==-1)
 		{
-			front=rear=0;
+			front=0;
 		}
-		
-		else
-		{
-			rear=(rear+1)%MAX;
-		}
-		
-		que[rear]=data;
 	}
 	
 }
@@ -95,48 +91,26 @@ void Queue :: dequeue()
 		
 		else
 		{
-			front=(front+1)% MAX;
+			front++;
 		}
 	}
 }
 
 void Queue :: display()
 {
-	int f=front;
-	int r=rear;
-	
 	
 	if(isEmpty())
 	{
 		cout<<"\nQueue is empty";
 	}
 	
-	if(f <= r) 
+	else
 	{
-        while (f <= r)
+		for(int i=front;i<=rear;i++)
 	    {
-            cout<<"| "<<que[f]<<" |";
-            f++;
-        }
-    } 
-	
-	else 
-	{
-        while (f <= MAX - 1) 
-		{
-            cout<<"| "<<que[f]<<" |";
-            f++;
-        }
-        
-        f = 0;
-        
-        while (f <= r)
-		{
-            cout<<"| "<<que[f]<<" |";
-            f++;
-      
+		    cout<<"| "<<que[i]<<" |";
 	    }
-    }
+	}
 
 }
 
@@ -150,10 +124,8 @@ int main()
 	
 	while(start=='y')
     {
-    	cout<<"\n------------------------------------";
-    	cout<<"\n1. Insert\n2. Delete\n3. Display";
-    	cout<<"\n------------------------------------";
-    	cout<<"\n\nEnter your choice: ";
+    	cout<<"\n1)Insert\n2)Delete\n";
+    	cout<<"\nEnter your choice: ";
         cin>>ch;
         
     	 switch(ch)
@@ -170,11 +142,7 @@ int main()
     			q.display();
     		
     			break;
-    		
-			case 3:
-			    q.display();
-				break;
-					
+    			
     		default:
     		cout<<"\nSorry!!! you have entered wrong choice";
     	 }	
