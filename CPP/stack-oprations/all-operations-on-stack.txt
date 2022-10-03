@@ -1,0 +1,217 @@
+Operations on stack
+
+
+1. PUSH()
+
+Push is a function in stack definition that is used to insert data at the stack's top.
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+    
+    stack<int> s; // creating a stack of integers
+    
+    s.push(1); // This pushes 1 to the stack top
+
+    s.push(2); // This pushes 2 to the stack top
+
+    s.push(3); // This pushes 3 to the stack top
+    
+    s.push(4); // This pushes 4 to the stack top
+    
+    s.push(5); // This pushes 5 to the stack top
+    
+    // printing the stack
+    
+    while(!s.empty())
+    {
+        cout<<s.top()<<" ";
+        s.pop();
+    }
+    
+    // The above loop prints "5 4 3 2 1"
+}
+
+
+2. POP()
+
+Pop is a function in the stack definition which is used to remove data from the stack's top.
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+    
+    stack<int> s; // creating a stack of integers
+    
+    s.push(1); // This pushes 1 to the stack top
+
+    s.push(2); // This pushes 2 to the stack top
+
+    s.push(3); // This pushes 3 to the stack top
+    
+    s.push(4); // This pushes 4 to the stack top
+    
+    s.push(5); // This pushes 5 to the stack top
+    
+    // printing the stack
+    
+    while(!s.empty())
+    {
+        cout<<s.top()<<" ";
+        s.pop();
+    }
+    
+    // The above loop prints "5 4 3 2 1"
+    
+    // Now, let us remove elements from the stack using pop function
+    
+    s.pop(); // removes 5 from the stack since 5 was present at the top. Now, the new stack top becomes 4.
+    s.pop(); // removes 4 from the stack since 4 was present at the top. Now, the new stack top becomes 3.
+    s.pop(); // removes 3 from the stack since 3 was present at the top. Now, the new stack top becomes 2.
+    s.pop(); // removes 2 from the stack since 2 was present at the top. Now, the new stack top becomes 1.
+    s.pop(); // removes 1 from the stack since 1 was present at the top. Now, the stack becomes empty.
+    
+}
+
+
+3. topElement() / peek()
+
+TopElement / Peek is a function in the stack which is used to extract the element present at the stack top.
+#include<bits/stdc++.h>
+using namespace std;
+
+int topElement(stack<int> &s)
+{
+    return s.top();
+}
+
+int main(){
+    
+    stack<int> s; // creating a stack of integers
+    
+    s.push(1); // This pushes 1 to the stack top
+    cout<<topElement(s)<<endl; // Prints 1 since 1 is present at the stack top
+
+    s.push(2); // This pushes 2 to the stack top
+    cout<<topElement(s)<<endl; // Prints 2 since 2 is present at the stack top
+
+
+    s.push(3); // This pushes 3 to the stack top
+    cout<<topElement(s)<<endl; // Prints 3 since 3 is present at the stack top
+
+}
+
+
+4. isEmpty()
+
+isEmpty is a boolean function in stack definition which is used to check whether the stack is empty or not. It returns true if the stack is empty. Otherwise, it returns false.
+#include<bits/stdc++.h>
+using namespace std;
+
+bool isEmpty(stack<int> &s){
+    
+    bool isStackEmpty = s.empty(); // checking whether stack is empty or not and storing it into isStackEmpty variable
+    
+    return isStackEmpty; // returning bool value stored in isStackEmpty
+}
+
+int main(){
+    
+    stack<int> s;
+    
+    // The if - else conditional statements below prints "Stack is empty."
+    if(isEmpty(s))
+    {
+        cout<<"Stack is empty."<<endl;
+    }
+    else{
+        cout<<"Stack is not empty."<<endl;
+    }
+    
+    s.push(1); //  Inserting value 1 to the stack top
+    
+    // The if - else conditional statements below prints "Stack is not empty."
+    if(isEmpty(s))
+    {
+        cout<<"Stack is empty."<<endl;
+    }
+    else{
+        cout<<"Stack is not empty."<<endl;
+    }
+    
+}
+
+
+5. isFull()
+
+isFull is a function which is used to check whether the stack has reached its maximum limit of insertion of data or not i.e. if 'maxLimit' is the maximum number of elements that can be stored in the stack and if there are exactly maxLimit number of elements present in the stack currently, then the function isFull() returns true. Otherwise, if the number of elements present in the stack currently are less than 'maxLimit', then isFull() returns false.
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int maxLimit = 3;
+
+bool isFull(stack<int> &s)
+{
+    if(s.size() == maxLimit)
+    {
+        return true; // returns true if s.size() == maxLimit
+    }
+    
+    return false; // returns false if s.size() != maxLimit
+}
+
+int main(){
+    
+    stack<int> s;
+    
+    s.push(1); // Inserting 1 in the stack
+    s.push(2); // Inserting 2 in the stack
+    
+    // The below if - else statement prints "Stack is not full."
+    
+    if(isFull(s))
+    {
+        cout<<"Stack is full."<<endl;
+    }
+    else{
+        cout<<"Stack is not full."<<endl;
+    }
+    
+    s.push(3); // Inserting 3 in the stack
+    
+    // The below if - else statement prints "Stack is full."
+    
+    if(isFull(s))
+    {
+        cout<<"Stack is full."<<endl;
+    }
+    else{
+        cout<<"stack is not full."<<endl;
+    }
+    
+}
+
+
+6. SIZE()
+
+Size is a function in stack definition which is used to find out the number of elements that are present inside the stack.
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+    
+    stack<int> s; // creating a stack of integers
+
+    cout<<s.size()<<endl; // Prints 0 since the stack is empty
+    
+    s.push(1); // This pushes 1 to the stack top
+    s.push(2); // This pushes 2 to the stack top
+    cout<<s.size()<<endl; // Prints 2 since the stack contains two elements
+
+    s.push(3); // This pushes 3 to the stack top
+    cout<<s.size()<<endl; // Prints 3 since the stack contains three elements
+
+}
+
+
