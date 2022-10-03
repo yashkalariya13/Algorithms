@@ -37,8 +37,8 @@ public:
                temp[0] = arr[left];
                temp[1] = arr[right];
                res.push_back(temp);
-               while(left < right && arr[left] == arr[left + 1])left++;
-               while(left < right && arr[right] == arr[right - 1])right--;
+               while(left < right && arr[left] == arr[left + 1]){left++;}
+               while(left < right && arr[right] == arr[right - 1]){right--;}
                left++;
                right--;
             }
