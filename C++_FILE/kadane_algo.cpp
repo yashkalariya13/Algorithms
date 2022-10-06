@@ -1,3 +1,4 @@
+//kadane algorithms
 #include<iostream>
 using namespace std;
 int kadanes(int array[],int length) {
